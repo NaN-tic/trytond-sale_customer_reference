@@ -41,12 +41,11 @@ tests_require = ['proteus >= %s.%s, < %s.%s' %
 
 setup(name='%s_%s' % (PREFIX, MODULE),
     version=info.get('version', '0.0.1'),
-    description='Tryton module to store customer reference of sales.',
+    description='Tryton module to store customer reference of sales',
     author='Zikzakmedia SL',
     author_email='zikzak@zikzakmedia.com',
     url='http://www.zikzakmedia.com',
-    download_url=(
-        "https://bitbucket.org/aneolf/trytond-sale_customer_reference"),
+    download_url="https://bitbucket.org/trytonspain/trytond-%s" % MODULE,
     package_dir={'trytond.modules.%s' % MODULE: '.'},
     packages=[
         'trytond.modules.%s' % MODULE,
