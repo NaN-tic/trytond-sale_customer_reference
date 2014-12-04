@@ -10,9 +10,7 @@ __metaclass__ = PoolMeta
 
 
 class Sale:
-    'Sale'
     __name__ = 'sale.sale'
-
     customer_reference = fields.Char('Customer Reference', select=True,
         states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
@@ -20,8 +18,9 @@ class Sale:
 
     def create_shipment(self, shipment_type):
         shipments = super(Sale, self).create_shipment(shipment_type)
-        if shipments:
-            for shipment in shipments:
-                shipment.customer_reference = self.customer_reference
-                shipment.save()
+        if not shipments:
+            return
+        for shipment in shipments:
+            shipment.customer_reference = self.customer_reference
+            shipment.save()
         return shipments
