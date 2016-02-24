@@ -16,11 +16,7 @@ class Sale:
             'readonly': Not(Equal(Eval('state'), 'draft')),
             }, depends=['state'])
 
-    def create_shipment(self, shipment_type):
-        shipments = super(Sale, self).create_shipment(shipment_type)
-        if not shipments:
-            return
-        for shipment in shipments:
-            shipment.customer_reference = self.customer_reference
-            shipment.save()
-        return shipments
+    def _get_shipment_sale(self, Shipment, key):
+        shipment = super(Sale, self)._get_shipment_sale(Shipment, key)
+        shipment.customer_reference = self.customer_reference
+        return shipment
