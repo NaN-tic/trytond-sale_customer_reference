@@ -8,8 +8,7 @@ from trytond.pool import PoolMeta
 __all__ = ['ShipmentOut', 'ShipmentOutReturn']
 
 
-class ShipmentOut:
-    __metaclass__ = PoolMeta
+class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
     customer_reference = fields.Char("Customer Reference", select=True,
         states={
@@ -17,8 +16,7 @@ class ShipmentOut:
             }, depends=['state'])
 
 
-class ShipmentOutReturn:
-    __metaclass__ = PoolMeta
+class ShipmentOutReturn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out.return'
     customer_reference = fields.Char("Customer Reference", select=True,
         states={
